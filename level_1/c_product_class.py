@@ -6,11 +6,29 @@
     2. Создайте экземпляр этого продукта и наполинте своими данными.
     3. Распечатайте о нем иформацию в таком виде: Информация о продукте: название, описание, цена, вес
 """
+import decimal
 
 
 class Product:
-    pass  # код писать тут
+    def __init__(self, name: str, description: str,
+                 price: float,
+                 weight: float):
+
+        self.name = name
+        self.description = description
+        self.price = price
+        self.weight = weight
+
+    def __str__(self):
+        return (f'{self.name} - {self.description}\n'
+                f'Price: {self.price}\n'
+                f'Weight: {self.weight}')
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    decimal.getcontext().prec = 2
+    p = Product('iPhone 15 Max',
+                'A brand new iPhone 15 Max 512 Gb',
+                round(1149.99, 2),
+                round(154.33, 2))
+    print(p)

@@ -14,5 +14,5 @@ class User:
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
-
+    u = User('Evgeny', 'some_nickname', 36, '+79261234567')
+    print(u.name, u.username, u.age, u.phone)
