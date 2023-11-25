@@ -11,8 +11,8 @@ import decimal
 
 class Product:
     def __init__(self, name: str, description: str,
-                 price: float,
-                 weight: float):
+                 price: decimal.Decimal,
+                 weight: decimal.Decimal):
 
         self.name = name
         self.description = description
@@ -29,6 +29,6 @@ if __name__ == '__main__':
     decimal.getcontext().prec = 2
     p = Product('iPhone 15 Max',
                 'A brand new iPhone 15 Max 512 Gb',
-                round(1149.99, 2),
-                round(154.33, 2))
+                decimal.Decimal('1149.99'),
+                decimal.Decimal('154.33'))
     print(p)
