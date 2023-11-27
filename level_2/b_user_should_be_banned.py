@@ -16,12 +16,14 @@ class User:
         self.name = name
         self.surname = surname
         self.age = age
-        self.is_banned = False
-        self.__should_be_banned()
+        self.is_banned = self.should_be_banned()
 
-    def __should_be_banned(self):
-        if self.surname in SURNAMES_TO_BAN:
-            self.is_banned = True
+    def should_be_banned(self, surname: str | None = None) -> bool:
+        global SURNAMES_TO_BAN # тут будет не глобал в обычной жизни, знаю, что так - плохо)
+        if surname:
+            SURNAMES_TO_BAN.append(surname)
+            self.is_banned = self.should_be_banned() # Как тебе такая рекурсивная изящность?)
+        return self.surname in SURNAMES_TO_BAN
 
     def __str__(self):
         return f'{self.name} {self.surname}, ' \

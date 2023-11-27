@@ -17,10 +17,12 @@ class BankAccount:
     def increase_balance(self, income: float):
         if income > 0:
             self.balance += round(income, 2)
+        else:
+            raise ValueError(f'Incorrect value {income}')
 
 
 if __name__ == '__main__':
-    ba = BankAccount('Ivanov Ivan', 12345.67)
-    print(ba.balance)
-    ba.increase_balance(10000)
-    print(ba.balance)
+    bank_account = BankAccount('Ivanov Ivan', 12345.67)
+    print(bank_account.balance)
+    bank_account.increase_balance(10000)
+    print(bank_account.balance)
