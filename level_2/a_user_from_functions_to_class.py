@@ -15,4 +15,16 @@ def generate_short_user_description(username: str, user_id: int, name: str):
 
 
 class User:
-    pass  # код писать тут
+    user_id = 0
+
+    def __init__(self, name: str, username: str):
+        self.name = name
+        self.username = username
+        self.user_id += 1
+
+    def make_username_capitalized(self):
+        return self.username.capitalize()
+
+    def generate_short_user_description(self):
+        return f'User with id {self.user_id} has {self.username} ' \
+               f'username and {self.name} name'
