@@ -26,18 +26,18 @@ class FileHandler:
 
 
 class JSONHandler(FileHandler):
-    def read_json(self):
-        json_from_file = self.read()
+    def read(self):
+        json_from_file = super().read()
         return json.loads(json_from_file)
 
 
 class CSVHandler(FileHandler):
-    def read_csv(self):
-        csv_from_file = self.read()
+    def read(self):
+        csv_from_file = super().read()
         return list(csv.DictReader(csv_from_file))
 
 
 if __name__ == '__main__':
     print(FileHandler('data/text.txt').read())
-    print(JSONHandler('data/recipes.json').read_json())
-    print(CSVHandler('data/user_info.csv').read_csv())
+    print(JSONHandler('data/recipes.json').read())
+    print(CSVHandler('data/user_info.csv').read())

@@ -27,8 +27,7 @@ class AuthorizationFormMixin:
 
 
 class AuthorizationForm(AuthorizationFormMixin, Form):
-    def __init__(self, username: str, password: str):
-        super().__init__(username, password)
+    pass
 
 
 if __name__ == '__main__':
