@@ -19,24 +19,38 @@ class Product:
         return f'Product {self.title} with price {self.price}'
 
 
-class PremiumProduct(Product):
+class PrintLogggerMixin:
+    def log(self, message):
+        print(message)
+
+
+class PremiumProduct(Product, PrintLogggerMixin):
     def increase_price(self):
         self.price *= 1.2
+        self.log('log: PremiumProduct increase price')
 
     def get_info(self):
         base_info = super().get_info()
+        self.log('log: PremiumProduct get_info')
         return f'{base_info} (Premium)'
 
 
-class DiscountedProduct(Product):
+class DiscountedProduct(Product, PrintLogggerMixin):
     def decrease_price(self):
         self.price /= 1.2
+        self.log('log: DiscountedProduct decrease_price')
 
     def get_info(self):
         base_info = super().get_info()
+        self.log('log: DiscountedProduct get_info')
         return f'{base_info} (Discounted)'
 
 
 if __name__ == '__main__':
-    pass
+    premium = PremiumProduct('iPhone 15 Pro', 1299.90)
+    premium.increase_price()
+    print(premium.get_info())
 
+    discounted = DiscountedProduct('Nokia 3210', 49.90)
+    discounted.decrease_price()
+    print(discounted.get_info())
