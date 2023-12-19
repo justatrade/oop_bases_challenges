@@ -24,25 +24,25 @@ class PrintLogggerMixin:
         print(message)
 
 
-class PremiumProduct(Product, PrintLogggerMixin):
+class PremiumProduct(PrintLogggerMixin, Product):
     def increase_price(self):
         self.price *= 1.2
-        self.log('log: PremiumProduct increase price')
+        self.log(f'log: PremiumProduct increase price. self.price: {self.price}')
 
     def get_info(self):
         base_info = super().get_info()
-        self.log('log: PremiumProduct get_info')
+        self.log(f'log: PremiumProduct get_info. base_info: {base_info}')
         return f'{base_info} (Premium)'
 
 
-class DiscountedProduct(Product, PrintLogggerMixin):
+class DiscountedProduct(PrintLogggerMixin, Product):
     def decrease_price(self):
         self.price /= 1.2
-        self.log('log: DiscountedProduct decrease_price')
+        self.log(f'log: DiscountedProduct decrease_price. self.price: {self.price}')
 
     def get_info(self):
         base_info = super().get_info()
-        self.log('log: DiscountedProduct get_info')
+        self.log(f'log: DiscountedProduct get_info. base_info: {base_info}')
         return f'{base_info} (Discounted)'
 
 
