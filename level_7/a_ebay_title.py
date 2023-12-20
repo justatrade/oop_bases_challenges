@@ -9,7 +9,7 @@
 
 
 class EbayTitleMixin:
-    EBAY_TITLE = 'eBay'
+    ebay_title = 'eBay'
 
 
 class EbayProduct(EbayTitleMixin):
@@ -18,7 +18,7 @@ class EbayProduct(EbayTitleMixin):
         self.price = price
 
     def get_product_info(self):
-        return f'Product {self.title} with price {self.price} from {self.EBAY_TITLE} marketplace'
+        return f'Product {self.title} with price {self.price} from {self.ebay_title} marketplace'
 
 
 if __name__ == '__main__':
