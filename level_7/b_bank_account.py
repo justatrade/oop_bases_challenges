@@ -17,8 +17,20 @@ class BankAccount:
         self.balance = balance
 
     def decrease_balance(self, amount: float):
-        pass  # писать код тут
+        if self.balance - amount >= self.min_balance:
+            self.balance -= amount
+        else:
+            raise ValueError
 
 
 if __name__ == '__main__':
-    pass  # писать код тут
+    bank_account = BankAccount('Vasya', 100.5)
+    try:
+        print(f'Current balance: {bank_account.balance}')
+        bank_account.decrease_balance(200)
+        print(f'Current balance: {bank_account.balance}')
+        bank_account.decrease_balance(10)
+    except ValueError:
+        print('Withdraw failed. Out of limit')
+    finally:
+        print(f'Current balance: {bank_account.balance}')
